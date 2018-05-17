@@ -1,0 +1,20 @@
+{
+  "name": "miniyarov/php-blockchain",
+  "description": "A simplified blockchain implementation in PHP",
+  "keywords": [
+    "blockchain"
+  ],
+  "type": "project",
+  "license": "MIT",
+  "require": {
+    "php": ">=7.1.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Blockchain\\": "src/"
+    },
+    "files": [
+      "helper.php"
+    ]
+  }
+}
