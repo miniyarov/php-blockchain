@@ -8,18 +8,14 @@ class Block
     public $data;
     public $prevBlockHash;
     public $hash;
+    public $targetZeros;
+    public $nonce;
 
     public function __construct($timestamp, $data, $prevBlockHash)
     {
         $this->timestamp = $timestamp;
         $this->data = $data;
         $this->prevBlockHash = $prevBlockHash;
-    }
-
-    public function setHash()
-    {
-        $headers = $this->prevBlockHash . $this->data . $this->timestamp;
-        $this->hash = hash('sha256', $headers);
-        return $this;
+        $this->nonce = 0;
     }
 }

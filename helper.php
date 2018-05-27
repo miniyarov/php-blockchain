@@ -1,9 +1,11 @@
 <?php
 
 use \Blockchain\Block;
+use \Blockchain\ProofOfWork;
 
 function newBlock(string $data, string $prevBlockHash)
 {
-    return (new Block(time(), $data, $prevBlockHash))
-        ->setHash();
+    $block = (new Block(time(), $data, $prevBlockHash));
+
+    return (new ProofOfWork($block))->run();
 }
