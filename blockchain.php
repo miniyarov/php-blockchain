@@ -2,9 +2,7 @@
 
 require 'vendor/autoload.php';
 
-use \Blockchain\Blockchain;
 use \Blockchain\CLI;
 
-$blockchain = new Blockchain();
-$cli = new CLI($blockchain);
+$cli = new CLI();
 $cli->run($argv);

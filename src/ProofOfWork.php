@@ -24,7 +24,7 @@ class ProofOfWork
     private function prepare(int $nonce)
     {
         return $this->block->prevBlockHash .
-            $this->block->data .
+            $this->block->hashTransactions() .
             dechex($this->block->timestamp) .
             dechex($this->block->targetZeros) .
             dechex($nonce);
@@ -34,7 +34,7 @@ class ProofOfWork
     {
         $nonce = 0;
 
-        echo "Mining the block containing {$this->block->data}" . PHP_EOL;
+        echo "Mining new block" . PHP_EOL;
 
         while ($nonce < self::MAX_NONCE) {
             $data = $this->prepare($nonce);
@@ -42,6 +42,7 @@ class ProofOfWork
             $hash = hash('sha256', $data);
 
             if ($this->satisfiesTarget($hash)) {
+                echo $hash . PHP_EOL;
                 $this->block->nonce = $nonce;
                 $this->block->hash = $hash;
 
